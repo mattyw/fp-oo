@@ -42,6 +42,7 @@
 
 (def pa (Point 2 5))
 (def pb (Point 3 8))
+(def pc (Point 3 8))
 
 (println (add pa pb))
 (println (add-shift pa pb))
@@ -60,15 +61,16 @@
 (defn equal-points? [p1 p2]
     (= p1 p2))
 
-(defn equal-triangles? [t1 t2]
-    (and
-        (equal-points?
-            (:point1 t1) (:point1 t2))
-        (equal-points?
-            (:point2 t1) (:point2 t2))
-        (equal-points?
-            (:point3 t1) (:point3 t2))))
+;Exercise 4
+(def equal-triangles? =)
 
 (println (equal-triangles? right-triangle right-triangle))
 (println (equal-triangles? right-triangle equal-right-triangle))
 (println (equal-triangles? right-triangle different-triangle))
+(println (equal-triangles? right-triangle equal-right-triangle different-triangle))
+
+;Exercise 5
+(defn valid-triangle [p1 p2 p3]
+    (= 3 (count (distinct '(p1 p2 p3)))))
+
+(println (valid-triangle pa pb pc))
