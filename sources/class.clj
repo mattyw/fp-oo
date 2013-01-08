@@ -39,7 +39,6 @@
 (prn (send-to point :class-name))
 (prn (send-to point :class))
 
-
 ;; For exercise 4
 (def Holder  
 {
@@ -50,4 +49,12 @@
                            (assoc this :held held))
   }
 })
+
+(defn apply-message-to [class instance message args]
+    (let [method (or (message (:__instance_methods__ class)
+                 message))]
+    (apply method instance args)))
+
+
+(prn (send-to (make Holder "stuff") :held))
 
