@@ -19,7 +19,8 @@
   {
     :add-instance-values (fn [this x y]
                            (assoc this :x x :y y))
-    :class :__class_symbol__
+    :class-name :__class_symbol__
+    :class (fn [this] (eval (:__class_symbol__ this)))
     :shift (fn [this xinc yinc]
              (make Point (+ (:x this) xinc)
                          (+ (:y this) yinc)))
@@ -28,6 +29,15 @@
                                 (:y other)))
    }
  })
+
+;; Exercise 1
+(prn (send-to (make Point 1 2) :shift -2 -3))
+
+;; Exercise 2
+(def point (make Point 1 2))
+
+(prn (send-to point :class-name))
+(prn (send-to point :class))
 
 
 ;; For exercise 4
@@ -41,4 +51,3 @@
   }
 })
 
-(prn (send-to (make Point 1 2) :shift -2 -3))
