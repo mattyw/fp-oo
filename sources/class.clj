@@ -58,3 +58,5 @@
 
 (prn (send-to (make Holder "stuff") :held))
 
+(prn (send-to (make Point 1 2) :some-unknown-message))
+
